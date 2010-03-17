@@ -17,4 +17,5 @@ requires 'Test::Reporter' => '1.56';
 requires 'Test::Reporter::Transport' => '1.56';
 auto_provides;
 githubmeta;
+makemaker_args(dist => { PREOP => "$^X ./tools/git-log.pl > ./Changes" });
 WriteAll();

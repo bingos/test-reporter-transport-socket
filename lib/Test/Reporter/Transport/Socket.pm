@@ -9,7 +9,7 @@ use Storable qw[nfreeze];
 use base qw[Test::Reporter::Transport];
 use vars qw[$VERSION];
 
-$VERSION ='0.02';
+$VERSION ='0.04';
 
 my @required_args = qw/host port/;
 
@@ -58,6 +58,7 @@ sub send {
   my $config = Config::Perl::V::summary(Config::Perl::V::plv2hash($perlv));
 
   my $data = {
+    distfile      => $report->distfile,
     grade         => $report->grade,
     osname        => $config->{osname},
     osversion     => $report->{_perl_version}{_osvers},
