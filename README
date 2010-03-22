@@ -69,6 +69,8 @@ COPYRIGHT AND LICENSE
       Portions Copyright (c) 2009-2010 by David A. Golden
       Portions Copyright (c) 2010 by Chris Williams
 
+      This module inlines Config::Perl::V Copyright (C) 2009-2010 H.Merijn Brand
+
     Licensed under the same terms as Perl itself (the "License"). You may
     not use this file except in compliance with the License. A copy of the
     License was distributed with this file or you may obtain a copy of the
