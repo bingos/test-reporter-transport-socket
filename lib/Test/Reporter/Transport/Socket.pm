@@ -8,7 +8,7 @@ use Storable qw[nfreeze];
 use base qw[Test::Reporter::Transport];
 use vars qw[$VERSION];
 
-$VERSION ='0.06';
+$VERSION ='0.08';
 
 my @required_args = qw/host port/;
 
@@ -54,7 +54,7 @@ sub send {
   # is a report regenerated from a file and isn't the perl that the report
   # was run on
   my $perlv = $report->{_perl_version}->{_myconfig};
-  my $config = Config::Perl::V::summary(Config::Perl::V::plv2hash($perlv));
+  my $config = TRTS::Config::Perl::V::summary(TRTS::Config::Perl::V::plv2hash($perlv));
 
   my $data = {
     distfile      => $report->distfile,
@@ -78,7 +78,7 @@ sub send {
   return 1;
 }
 
-package Config::Perl::V;
+package TRTS::Config::Perl::V;
 
 use strict;
 use warnings;
