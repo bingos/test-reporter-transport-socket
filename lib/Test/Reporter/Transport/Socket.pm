@@ -55,6 +55,7 @@ sub send {
   # was run on
   my $perlv = $report->{_perl_version}->{_myconfig};
   my $config = TRTS::Config::Perl::V::summary(TRTS::Config::Perl::V::plv2hash($perlv));
+  my $perl_version = $report->{_perl_version}{_version} || $config->{version};
 
   my $data = {
     distfile      => $report->distfile,
@@ -62,7 +63,7 @@ sub send {
     osname        => $config->{osname},
     osversion     => $report->{_perl_version}{_osvers},
     archname      => $report->{_perl_version}{_archname},
-    perl_version  => $config->{version},
+    perl_version  => $perl_version,
     textreport    => $report->report
   };
 
