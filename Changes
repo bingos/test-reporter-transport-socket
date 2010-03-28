@@ -1,4 +1,15 @@
 ==============================
+2010-03-23 18:17:38 +0000 0.08
+==============================
+
+  commit a6b37fea9ab3e6f88fe90544b11bd8dbcf6c6f28
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date:   Tue Mar 23 18:17:38 2010 +0000
+  
+    Renamed the inline Config::Perl::V to TRTS::Config::Perl::V so that
+    PAUSE indexer doesn't squeal like a stabbed pig at us 
+
+==============================
 2010-03-22 21:20:14 +0000 0.06
 ==============================
 
