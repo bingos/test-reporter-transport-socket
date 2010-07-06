@@ -1,14 +1,13 @@
 package Test::Reporter::Transport::Socket;
 
+# ABSTRACT: Simple socket transport for Test::Reporter
+
 use strict;
 use warnings;
 use Carp ();
 use IO::Socket::INET;
 use Storable qw[nfreeze];
 use base qw[Test::Reporter::Transport];
-use vars qw[$VERSION];
-
-$VERSION ='0.12';
 
 my @required_args = qw/host port/;
 
@@ -95,8 +94,7 @@ use warnings;
 
 use Config;
 use Exporter;
-use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
-$VERSION     = "0.12";
+use vars qw(@ISA @EXPORT_OK %EXPORT_TAGS);
 @ISA         = ("Exporter");
 @EXPORT_OK   = qw( plv2hash summary myconfig signature );
 %EXPORT_TAGS = (
@@ -393,11 +391,7 @@ sub myconfig
 
 1;
 
-__END__
-
-=head1 NAME
-
-Test::Reporter::Transport::Socket - Simple socket transport for Test::Reporter
+=pod
 
 =head1 SYNOPSIS
 
@@ -477,24 +471,6 @@ The C<send> method transmits the report.
   Richard Dawe (RICHDAWE)
   Chris Williams (BINGOS)
 
-=head1 COPYRIGHT AND LICENSE
-
-  Portions Copyright (c) 2009 by Richard Dawe
-  Portions Copyright (c) 2009-2010 by David A. Golden
-  Portions Copyright (c) 2010 by Chris Williams
-
   This module inlines Config::Perl::V Copyright (C) 2009-2010 H.Merijn Brand
 
-Licensed under the same terms as Perl itself (the "License").
-You may not use this file except in compliance with the License.
-A copy of the License was distributed with this file or you may obtain a
-copy of the License from http://dev.perl.org/licenses/
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
 =cut
-
