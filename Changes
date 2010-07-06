@@ -1,4 +1,26 @@
 ==============================
+2010-03-28 12:07:44 +0100 0.10
+==============================
+
+  commit d2ce7324ad3376627766e8ec5383a02816e2c1dc
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date:   Sun Mar 28 12:07:44 2010 +0100
+  
+    This be 0.10
+
+  commit 69f5163e1ba4d51d95981ceb385e3f552bc3c663
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date:   Sun Mar 28 11:40:07 2010 +0100
+  
+    Updated Changes
+
+  commit 67b5beb75535280661abbf518b61c1553eab6cd2
+  Author: David Golden <dagolden@cpan.org>
+  Date:   Fri Mar 26 13:21:51 2010 -0400
+  
+    use Test::Reporter 1.57 style perl version if available 
+
+==============================
 2010-03-23 18:17:38 +0000 0.08
 ==============================
 

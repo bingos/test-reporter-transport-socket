@@ -8,7 +8,7 @@ use Storable qw[nfreeze];
 use base qw[Test::Reporter::Transport];
 use vars qw[$VERSION];
 
-$VERSION ='0.10';
+$VERSION ='0.12';
 
 my @required_args = qw/host port/;
 
@@ -22,6 +22,10 @@ sub new {
   for my $k ( @required_args ) {
     Carp::confess __PACKAGE__ . " requires $k argument\n"
       unless exists $args{$k};
+  }
+
+  if ( ref $args{host} eq 'ARRAY' and !scalar @{ $args{host} } ) {
+    Carp::confess __PACKAGE__ . " requires 'host' argument to have elements if it is an arrayref\n";
   }
 
   return bless \%args => $class;
@@ -39,11 +43,16 @@ sub send {
   # Open the socket to the given host:port
   # confess on failure.
 
-  my $sock = IO::Socket::INET->new(
-    PeerAddr => $self->{host},
-    PeerPort => $self->{port},
-    Proto    => 'tcp'
-  );
+  my $sock;
+
+  foreach my $host ( ( ref $self->{host} eq 'ARRAY' ? @{ $self->{host} } : $self->{host} ) ) {
+    $sock = IO::Socket::INET->new(
+      PeerAddr => $host,
+      PeerPort => $self->{port},
+      Proto    => 'tcp'
+    );
+    last if $sock;
+  }
 
   unless ( $sock ) {
     Carp::confess __PACKAGE__ . ": could not connect to '$self->{host}' '$!'\n";
@@ -436,6 +445,9 @@ Arguments include:
 =item C<host> (required)
 
 The name or IP address of a host where we want to send our serialised data.
+
+This may also be an arrayref of the above. A connection will be attempted to each
+item in turn until a successful connection is made.
 
 =item C<port>
 
