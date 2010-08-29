@@ -81,7 +81,8 @@ sub send {
   Carp::confess __PACKAGE__ . ": Could not freeze data '$@'\n"
     unless $froze;
 
-  my $foo = $sock->send( $froze );
+  $sock->send( $froze ) or
+    warn "Could not send data '$!'\n";
   
   close $sock;
   return 1;
