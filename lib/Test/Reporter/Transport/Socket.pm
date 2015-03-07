@@ -5,11 +5,23 @@ package Test::Reporter::Transport::Socket;
 use strict;
 use warnings;
 use Carp ();
-use IO::Socket::INET;
 use Storable qw[nfreeze];
 use base qw[Test::Reporter::Transport];
 
 my @required_args = qw/host port/;
+
+my $sockclass;
+
+BEGIN {
+  eval {
+    require IO::Socket::IP;
+    $sockclass = 'IO::Socket::IP';
+  };
+  if ( !$sockclass ) {
+    require IO::Socket::INET;
+    $sockclass = 'IO::Socket::INET';
+  }
+}
 
 sub new {
   my $class = shift;
@@ -45,7 +57,7 @@ sub send {
   my $sock;
 
   foreach my $host ( ( ref $self->{host} eq 'ARRAY' ? @{ $self->{host} } : $self->{host} ) ) {
-    $sock = IO::Socket::INET->new(
+    $sock = $sockclass->new(
       PeerAddr => $host,
       PeerPort => $self->{port},
       Proto    => 'tcp'
