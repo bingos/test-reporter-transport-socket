@@ -513,7 +513,7 @@ sub myconfig {
 This is a L<Test::Reporter::Transport> that sends test report data serialised
 over a TCP socket.
 
-The idea is to keep dependencies in the tester perl to a bear minimum and offload
+The idea is to keep dependencies in the tester perl to a bare minimum and offload
 the bulk of submission to a Metabase instance to a relay.
 
 =head1 USAGE
